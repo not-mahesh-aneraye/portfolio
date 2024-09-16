@@ -109,9 +109,14 @@ body, html {
     transform: translate(-50%, -50%);
     background-color: #262222;
     color: #f3fbb7;
-    padding: 20px;
+    padding: 15px 10px;
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    width: 90%; /* Adjusted width for responsiveness */
+    max-width: 400px; /* Prevents popup from being too wide on larger screens */
+    max-height: 180px; /* Avoid vertical scrolling on small devices */
+    overflow: hidden; /* Prevent any scrollbars */
+    box-sizing: border-box; /* Ensure padding doesn't add to the width */
 }
 
 .game-input {
@@ -186,9 +191,11 @@ body, html {
 
     /* Adjust the game popup windows */
     .popup {
-        width: 100%;
-        padding: 10px;
-        font-size: 17px; /* Reduce font size for popups */
+        width: 85%; /* Ensure popup fits well within mobile screen */
+        max-height: 160px; /* Reduce height to avoid overflow on small devices */
+        padding: 15px; /* Adequate padding */
+        font-size: 16px; /* Adjust font size for readability */
+        overflow: hidden; /* Remove scrollbars */
     }
 
     .game-input, #terminal-input {
@@ -199,5 +206,19 @@ body, html {
     .terminal-body {
         max-height: 70vh; /* Adjust terminal height for mobile */
         overflow-y: auto;
+    }
+}
+#ascii-art {
+    color: #ced0ce; /* Green to match the terminal theme */
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    margin-top: 20px; /* Add space above */
+    white-space: pre; /* Preserve spaces and formatting */
+}
+
+/* For mobile responsiveness */
+@media only screen and (max-width: 600px) {
+    #ascii-art {
+        font-size: 14px; /* Adjust font size for smaller screens */
     }
 }
