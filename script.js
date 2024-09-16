@@ -308,13 +308,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function processTriviaQuiz() {
         const userAnswer = triviaInput.value.trim().toLowerCase();
-        const correctAnswer = '42'; // Example correct answer for a trivia question
+        const correctAnswer = 'paris'; // Example correct answer for a trivia question
         let result = '';
 
         if (userAnswer === correctAnswer) {
             result = 'Correct! Well done!';
         } else {
-            result = 'Incorrect. The correct answer was 42.';
+            result = 'Incorrect. The correct answer was paris.';
         }
 
         const output = document.createElement("p");
