@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="terminal">
+        <div class="terminal-header">
+            <div class="terminal-btn red"></div>
+            <div class="terminal-btn yellow"></div>
+            <div class="terminal-btn green"></div>
+            <p>Mahesh@Portfolio:~</p>
+        </div>
+        <div id="terminal-body" class="terminal-body">
+            <div class="input-line">
+                <span class="prompt">Mahesh@Portfolio:~$</span>
+                <input type="text" id="terminal-input" class="terminal-input">
+            </div>
+        </div>
+        <!-- Rock-Paper-Scissors Game Popup -->
+        <div id="game-popup" class="popup">
+            <h2>Rock, Paper, Scissors</h2>
+            <p>Enter your choice (rock, paper, or scissors):</p>
+            <input type="text" id="game-input" class="game-input">
+            <button id="game-submit" class="game-submit">&#x2713;</button> <!-- Checkmark symbol -->
+        </div>
+        <!-- Guess the Number Game Popup -->
+        <div id="number-popup" class="popup">
+            <h2>Guess the Number</h2>
+            <p>Guess a number between 1 and 20:</p>
+            <input type="number" id="number-input" class="game-input" min="1" max="10">
+            <button id="number-submit" class="game-submit">&#x2713;</button>
+        </div>
+        <!-- Trivia Quiz Game Popup -->
+        <div id="trivia-popup" class="popup">
+            <h2>Trivia Quiz</h2>
+            <p>What is the capital of France?</p>
+            <input type="text" id="trivia-input" class="game-input">
+            <button id="trivia-submit" class="game-submit">&#x2713;</button>
+        </div>
+        <!-- Skills Section Popup -->
+        <div id="skills-popup" class="popup">
+            <h2>Skills</h2>
+            <div id="skills-list"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

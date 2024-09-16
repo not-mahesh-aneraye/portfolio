@@ -1,0 +1,203 @@
+/* Ensure the page fits the browser window */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/bg-2.webp');
+    background-size: 1520px 800px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-color: #101010;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Courier New', Courier, monospace;
+    color: #101010;
+}
+
+.terminal {
+    background-color: rgba(38, 34, 34, 0.8);
+    width: 90%;
+    max-width: 900px;
+    height: 90%;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+}
+
+.terminal-header {
+    background-color: #333;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.terminal-header p {
+    color: #fff;
+    margin: 0 auto;
+    font-weight: bold;
+}
+
+.terminal-btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.red {
+    background-color: #f05454;
+}
+
+.yellow {
+    background-color: #ffa600;
+}
+
+.green {
+    background-color: #16c79a;
+}
+
+.terminal-body {
+    padding: 20px;
+    overflow-y: auto;
+    flex-grow: 1;
+    color: #b1b1b1;
+}
+
+.input-line {
+    display: flex;
+    align-items: center;
+}
+
+.prompt {
+    color: #00ff00;
+    margin-right: 10px;
+}
+
+.terminal-input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #edc01c;
+    font-family: inherit;
+    font-size: 16px;
+    flex-grow: 1;
+}
+
+.command-line {
+    color: #00ff00; /* Green color for commands */
+    margin: 10px 0; /* Spacing above and below command lines */
+    white-space: pre-wrap; /* Preserve whitespace */
+}
+
+.output-line {
+    color: #b0aeae; /* White color for outputs */
+    margin: 10px 0; /* Spacing above and below output lines */
+    white-space: pre-wrap; /* Preserve whitespace */
+}
+
+.popup {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #262222;
+    color: #f3fbb7;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.game-input {
+    background-color: transparent;
+    border: none;
+    color: #eddf1c;
+    font-family: inherit;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.game-submit {
+    background-color: transparent;
+    border: none;
+    color: #00ff00;
+    font-size: 20px;
+    cursor: pointer;
+    display: inline;
+}
+
+.command-text {
+    color: #ddc736; /* Different color for command text */
+}
+
+.output {
+    margin: 10px 0;
+    white-space: pre-wrap;
+}
+
+/* Skills Section Styling */
+#skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.skill-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.skill-logo {
+    width: 40px; /* Adjust size as needed */
+    height: 40px; /* Adjust size as needed */
+}
+
+.skill-info {
+    color: #eddf1c;
+}
+
+/* For mobile screens */
+@media only screen and (max-width: 600px) {
+    /* Terminal container */
+    .terminal {
+        width: 90%; /* Adjust width for mobile view */
+        height: 80vh; /* Use viewport height to maintain a good fit */
+        margin: 10px auto; /* Center the terminal on the screen */
+        padding: 10px;
+        font-size: 17px; /* Adjust font size for better readability */
+    }
+
+    /* Adjust the header buttons */
+    .terminal-header {
+        height: 30px;
+    }
+
+    /* Input line adjustment */
+    .input-line {
+        font-size: 17px; /* Adjust input font size */
+    }
+
+    /* Adjust the game popup windows */
+    .popup {
+        width: 100%;
+        padding: 10px;
+        font-size: 17px; /* Reduce font size for popups */
+    }
+
+    .game-input, #terminal-input {
+        width: 100%; /* Ensure input fields use full width */
+    }
+
+    /* Ensure scrollability for smaller screens */
+    .terminal-body {
+        max-height: 70vh; /* Adjust terminal height for mobile */
+        overflow-y: auto;
+    }
+}
