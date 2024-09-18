@@ -67,6 +67,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 case 'education':
                     output.innerHTML = showEducation();
                     break;
+                case 'certifications':
+                    output.innerHTML = showCertifications();
+                    break;
                 case 'games':
                     output.innerHTML = showGames();
                     break;
@@ -112,33 +115,34 @@ document.addEventListener("DOMContentLoaded", function() {
         `- contact<br>` +
         `- experience<br>` +
         `- education<br>` +
+        `- certifications<br>` + 
         `- games <br>` +
         `- clear<br>` +
         `- sudo -i (WARNING: Do Not Execute this Command It Will mess with your system)<br>`;
     }
 
     function showAbout() {
-        return "I'm Mahesh, a DevOps engineer with a passion for coding and problem-solving.";
+        return "I'm Mahesh, a DevOps engineer. Specialize in building robust CI/CD pipelines, automating workflows, and optimizing cloud-based deployments.";
     }
 
     function showProjects() {
         return `Projects:<br><br>` +
-               `1. ChatBuddy - A web application for messaging using Django.<br>` +
-               `2. AWS Deployment using Terraform - Automates AWS services deployment.`;
+               `- AWS Deployment using Terraform <br><br>- This project utilizes Terraform to automate the deployment of key AWS services, ensuring consistent and efficient infrastructure setup. The automation script manages the creation of a Virtual Private Cloud (VPC) along with essential components such as an Internet Gateway, Route Table, and Subnets. It also automates the deployment of EC2 instances within the VPC, enabling scalable and secure cloud environments. By defining infrastructure as code, the project enhances reliability, scalability, and repeatability while reducing manual effort. <br><br>` +
+               `- ChatBuddy <br><br>- This web application, developed with Django, HTML, and CSS, offers a streamlined and intuitive platform for real-time messaging. It prioritizes user experience with key features such as user authentication, secure message handling, and a responsive design for cross-device usability. The Django backend ensures efficient data management, while the clean front-end interface enhances accessibility and simplicity. <br><br>`;
     }
 
     function showSkills() {
         const skills = [
+            'Linux',
+            'AWS',
             'Docker',
             'Kubernetes',
-            'Ansible',
-            'Linux',
-            'Git',
-            'Terraform',
-            'AWS',
             'Jenkins',
+            'Ansible',
+            'Terraform',
             'Python',
             'Bash',
+            'Git',
             'CI',
             'CD'
         ];
@@ -170,19 +174,26 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function showContact() {
-        return `Contact me at: <a href="mailto:your.email@example.com">your.email@example.com</a>`;
+        return `Contact me at: <a href="mailto:maheshaneraye@gmail.com">maheshaneraye@gmail.com</a>`;
     }
 
     function showExperience() {
         return `Experience:<br><br>` +
-               `- DevOps Engineer at Company XYZ<br>` +
-               `- Previously worked on various projects involving cloud infrastructure and automation.`;
+               `- Project at Oasis Infobyte<br><br>` +
+               `- As a Project Intern, I developed and deployed a web application using the Django framework, REST, HTML, CSS, and AWS EC2. I deployed and maintained Linux servers on AWS, implementing automation solutions that increased productivity by 15%. Additionally, I analyzed and resolved server issues, ensuring smooth application performance and reliability.<br><br>`;
     }
 
     function showEducation() {
         return `Education:<br><br>` +
                `- Bachelor’s degree in Computer Science.<br>` +
-               `- Various certifications in cloud technologies and DevOps practices.`;
+               `- Various certifications in cloud technologies and DevOps practices.<br><br>`;
+    }
+
+    function showCertifications() {
+        return `Certifications and Badges:<br><br>` +
+               `Credly Badges <a href="https://www.credly.com/users/mahesh-aneraye" target="_blank">Here</a><br>` +
+               `Ultimate AWS Certified Cloud Practitioner - Udemy <a href="https://www.udemy.com/certificate/UC-4c4b99e9-fa82-45a2-83e4-ef54f9eb189a/" target="_blank">Here</a><br>` +
+               `Scientific Computing with Python - freeCodeCamp <a href="https://www.freecodecamp.org/certification/Mahesh_Aneraye/scientific-computing-with-python-v7" target="_blank">Here</a><br>`;
     }
 
     function showGames() {
@@ -219,30 +230,31 @@ document.addEventListener("DOMContentLoaded", function() {
         const userChoice = gameInput.value.trim().toLowerCase();
         const choices = ['rock', 'paper', 'scissors'];
         const computerChoice = choices[Math.floor(Math.random() * choices.length)];
-        let result = '';
 
-        if (choices.includes(userChoice)) {
-            if (userChoice === computerChoice) {
-                result = 'It\'s a tie!';
-            } else if (
-                (userChoice === 'rock' && computerChoice === 'scissors') ||
-                (userChoice === 'paper' && computerChoice === 'rock') ||
-                (userChoice === 'scissors' && computerChoice === 'paper')
-            ) {
-                result = 'You win!';
-            } else {
-                result = 'Computer wins!';
-            }
-        } else {
-            result = 'Invalid choice. Please choose rock, paper, or scissors.';
-        }
+        const result = determineRPSWinner(userChoice, computerChoice);
 
-        const output = document.createElement("p");
-        output.classList.add("output");
-        output.innerHTML = `Rock-Paper-Scissors:<br>Your choice: ${userChoice}<br>Computer's choice: ${computerChoice}<br>${result}`;
-        terminalBody.insertBefore(output, document.querySelector('.input-line'));
         gamePopup.style.display = 'none';
+
+        const gameResult = document.createElement("p");
+        gameResult.classList.add("output");
+        gameResult.innerHTML = `You chose: ${userChoice}<br>Computer chose: ${computerChoice}<br>${result}`;
+
+        terminalBody.insertBefore(gameResult, document.querySelector('.input-line'));
         terminalBody.scrollTop = terminalBody.scrollHeight;
+    }
+
+    function determineRPSWinner(userChoice, computerChoice) {
+        if (userChoice === computerChoice) {
+            return "It's a tie!";
+        } else if (
+            (userChoice === 'rock' && computerChoice === 'scissors') ||
+            (userChoice === 'scissors' && computerChoice === 'paper') ||
+            (userChoice === 'paper' && computerChoice === 'rock')
+        ) {
+            return "You win!";
+        } else {
+            return "You lose!";
+        }
     }
 
     function showNumberGuess() {
@@ -266,24 +278,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function processNumberGuess() {
         const userGuess = parseInt(numberInput.value.trim());
-        const randomNumber = Math.floor(Math.random() * 20) + 1; // Range 1-20
-        let result = '';
+        const randomNumber = Math.floor(Math.random() * 10) + 1;
 
-        if (!isNaN(userGuess)) {
-            if (userGuess === randomNumber) {
-                result = 'Congratulations! You guessed the correct number!';
-            } else {
-                result = `Sorry, the correct number was ${randomNumber}.`;
-            }
-        } else {
-            result = 'Please enter a valid number between 1 and 20.';
-        }
+        const result = (userGuess === randomNumber) ? "Correct! You guessed the number!" : `Wrong! The correct number was ${randomNumber}.`;
 
-        const output = document.createElement("p");
-        output.classList.add("output");
-        output.innerHTML = `Guess the Number:<br>Your guess: ${userGuess}<br>${result}`;
-        terminalBody.insertBefore(output, document.querySelector('.input-line'));
         numberPopup.style.display = 'none';
+
+        const numberResult = document.createElement("p");
+        numberResult.classList.add("output");
+        numberResult.innerHTML = result;
+
+        terminalBody.insertBefore(numberResult, document.querySelector('.input-line'));
         terminalBody.scrollTop = terminalBody.scrollHeight;
     }
 
@@ -308,20 +313,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function processTriviaQuiz() {
         const userAnswer = triviaInput.value.trim().toLowerCase();
-        const correctAnswer = 'paris'; // Example correct answer for a trivia question
-        let result = '';
+        const correctAnswer = 'canada'; // Example trivia answer
 
-        if (userAnswer === correctAnswer) {
-            result = 'Correct! Well done!';
-        } else {
-            result = 'Incorrect. The correct answer was paris.';
-        }
+        const result = (userAnswer === correctAnswer) ? "Correct! You know your trivia!" : `Wrong! The correct answer was ${correctAnswer}.`;
 
-        const output = document.createElement("p");
-        output.classList.add("output");
-        output.innerHTML = `Trivia Quiz:<br>Your answer: ${userAnswer}<br>${result}`;
-        terminalBody.insertBefore(output, document.querySelector('.input-line'));
         triviaPopup.style.display = 'none';
+
+        const triviaResult = document.createElement("p");
+        triviaResult.classList.add("output");
+        triviaResult.innerHTML = result;
+
+        terminalBody.insertBefore(triviaResult, document.querySelector('.input-line'));
         terminalBody.scrollTop = terminalBody.scrollHeight;
     }
 });
