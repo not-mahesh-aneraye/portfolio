@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function showHelp() {
-        return `Available commands:<br><br>` +
+        return `Available commands: (HINT:- Type command-names like about.)<br><br>` +
         `- about<br>` +
         `- projects<br>` +
         `- skills<br>` +
